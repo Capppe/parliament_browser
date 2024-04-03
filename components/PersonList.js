@@ -2,12 +2,12 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 import Person from './Person';
 
-export default PersonList = ({data, label}) => {
+export default PersonList = ({data, onPress}) => {
   return (
     <View>
       <FlatList
         data={data}
-        renderItem={({item}) => <Person person={item}/>}
+        renderItem={({item}) => <Person person={item} onPress={onPress}/>}
         keyExtractor={item => item.id}
         horizontal={true}
         style={styles.list}

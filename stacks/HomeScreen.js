@@ -10,26 +10,30 @@ export default HomeScreen = ({ navigation }) => {
 
   //Empty dependency list ([]) means it will run when the component is loaded
   useEffect(() => {
-    addPersons();
+    getPersons();
   }, []);
 
   useEffect(() => {
     setCurrentSittingPersons(persons.filter((person) => person.state === '1'));
   }, [persons])
 
-  const addPersons = async () => {
+  const getPersons = async () => {
     setPersons(await fetchPersons());
+  }
+
+  const viewPersonDetails = (ID) => {
+    navigation.navigate("Details", {personID: ID});
   }
 
   return (
     <View>
       <View>
         <Text style={styles.drawerHeader}> Nuvarande ledamöter </Text>
-        <PersonList data={currentSittingPersons}/>
+        <PersonList data={currentSittingPersons} onPress={viewPersonDetails}/>
       </View>
       <View>
         <Text style={styles.drawerHeader}> Övriga ledamöter </Text>
-        <PersonList data={persons.filter((person) => person.state !== '1')}/>
+        <PersonList data={persons.filter((person) => person.state !== '1')} onPress={viewPersonDetails}/>
       </View>
     </View>
   );

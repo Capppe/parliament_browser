@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 export default Person = ({ person, onPress }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={() => {onPress(person.id)}}>
         <Image style={styles.image} source={{uri: person.image !== null ? person.image.url : null}}/>
         <Text>{person.name}</Text>
       </TouchableOpacity>
