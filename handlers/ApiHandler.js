@@ -9,10 +9,9 @@ async function apiCall(url) {
 
 export async function fetchPersons() {
   console.log("Fetching persons");
-  const url = 'https://api.lagtinget.ax/api/persons.json';
+  const url = "https://api.lagtinget.ax/api/persons.json";
   return await apiCall(url);
 }
-
 
 /*****************/
 /* Person detail */
@@ -20,6 +19,7 @@ export async function fetchPersons() {
 
 export async function fetchPerson(personID) {
   console.log("Fetching person with ID: ", personID);
-  const url = 'https://api.lagtinget.ax/api/persons/' + personID.replace(/\s/g, ""); //Remove whitespaces
+  const url =
+    "https://api.lagtinget.ax/api/persons/" + personID.replace(/\s/g, ""); //Remove whitespaces
   return await apiCall(url);
 }

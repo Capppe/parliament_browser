@@ -1,26 +1,25 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from "react-native";
 
-import Person from './Person';
+import Person from "./Person";
 
-export default PersonList = ({data, onPress}) => {
+export const PersonList = ({ data, onPress }) => {
   return (
     <View>
       <FlatList
         data={data}
-        renderItem={({item}) => <Person person={item} onPress={onPress}/>}
-        keyExtractor={item => item.id}
-        horizontal={true}
+        renderItem={({ item }) => <Person person={item} onPress={onPress} />}
+        keyExtractor={(item) => item.id}
+        horizontal
         style={styles.list}
         contentContainerStyle={styles.container}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  list: {
-  },
+  list: {},
   container: {
     gap: 10,
-  }
-})
+  },
+});

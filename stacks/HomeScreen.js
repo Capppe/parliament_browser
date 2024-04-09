@@ -1,10 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-import { fetchPersons } from '../handlers/ApiHandler';
-import PersonList from '../components/PersonList';
+import PersonList from "../components/PersonList";
+import { fetchPersons } from "../handlers/ApiHandler";
 
-export default HomeScreen = ({ navigation }) => {
+export const HomeScreen = ({ navigation }) => {
   const [persons, setPersons] = useState([]);
   const [currentSittingPersons, setCurrentSittingPersons] = useState([]);
 
@@ -14,36 +14,39 @@ export default HomeScreen = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    setCurrentSittingPersons(persons.filter((person) => person.state === '1'));
-  }, [persons])
+    setCurrentSittingPersons(persons.filter((person) => person.state === "1"));
+  }, [persons]);
 
   const getPersons = async () => {
     setPersons(await fetchPersons());
-  }
+  };
 
   const viewPersonDetails = (ID) => {
-    navigation.navigate("Details", {personID: ID});
-  }
+    navigation.navigate("Details", { personID: ID });
+  };
 
   return (
     <View>
       <View>
         <Text style={styles.drawerHeader}> Nuvarande ledamöter </Text>
-        <PersonList data={currentSittingPersons} onPress={viewPersonDetails}/>
+        <PersonList data={currentSittingPersons} onPress={viewPersonDetails} />
       </View>
       <View>
         <Text style={styles.drawerHeader}> Övriga ledamöter </Text>
-        <PersonList data={persons.filter((person) => person.state !== '1')} onPress={viewPersonDetails}/>
+        <PersonList
+          data={persons.filter((person) => person.state !== "1")}
+          onPress={viewPersonDetails}
+        />
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   drawerHeader: {
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     margin: 5,
-  }
-})
+  },
+});

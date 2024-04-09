@@ -1,10 +1,9 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { ListItem } from '@rneui/themed';
+import { useEffect, useState } from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 
-import { fetchPerson } from '../handlers/ApiHandler';
-import { useEffect, useState } from 'react';
+import { fetchPerson } from "../handlers/ApiHandler";
 
-export default DetailsScreen = ({ navigation, route }) => {
+export const DetailsScreen = ({ navigation, route }) => {
   const [person, setPerson] = useState(null);
 
   const personID = route.params.personID;
@@ -13,26 +12,28 @@ export default DetailsScreen = ({ navigation, route }) => {
     const getPerson = async () => {
       const data = await fetchPerson(personID);
       setPerson(data);
-    }
+    };
 
     getPerson();
   }, [personID]);
 
   return (
     <View style={styles.container}>
-      {person !== null ?
+      {person !== null ? (
         <View>
           {console.log(person)}
-          <Image style={styles.image} source={{uri: person.image !== null ? person.image.url : null}}/>
+          <Image
+            style={styles.image}
+            source={{ uri: person.image !== null ? person.image.url : null }}
+          />
           <Text>{person.name}</Text>
         </View>
-        :
-        <View>
-        </View>
-      }
+      ) : (
+        <View />
+      )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -42,4 +43,4 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
   },
-})
+});

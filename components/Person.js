@@ -1,15 +1,23 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
-export default Person = ({ person, onPress }) => {
+export const Person = ({ person, onPress }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => {onPress(person.id)}}>
-        <Image style={styles.image} source={{uri: person.image !== null ? person.image.url : null}}/>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          onPress(person.id);
+        }}
+      >
+        <Image
+          style={styles.image}
+          source={{ uri: person.image !== null ? person.image.url : null }}
+        />
         <Text>{person.name}</Text>
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -20,6 +28,6 @@ const styles = StyleSheet.create({
     width: 140,
   },
   button: {
-    alignItems: 'center',
+    alignItems: "center",
   },
-})
+});
