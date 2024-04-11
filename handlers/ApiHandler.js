@@ -23,3 +23,16 @@ export async function fetchPerson(personID) {
     "https://api.lagtinget.ax/api/persons/" + personID.replace(/\s/g, ""); //Remove whitespaces
   return await apiCall(url);
 }
+
+export async function fetchOrganization(orgID) {
+  console.log("Fetching organization with ID: ", orgID);
+  const url =
+    "https://api.lagtinget.ax/api/organizations/" + orgID.replace(/\s/g, "");
+  return await apiCall(url);
+}
+
+export async function fetchRole(roleID) {
+  console.log("Fetching role with ID: ", roleID);
+  const url = "https://api.lagtinget.ax/api/roles/" + roleID.replace(/\s/g, "");
+  return await apiCall(url);
+}

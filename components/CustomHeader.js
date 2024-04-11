@@ -1,23 +1,28 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
-export const CustomHeader = ({ title }) => {
+export const CustomTitle = ({ title }) => {
   return (
-    <View style={styles.container}>
-      <View style={{ flex: 1 }}>
-        <Text>{title}</Text>
-      </View>
-      <View>
-        <TouchableOpacity>
-          <Text>Search</Text>
-        </TouchableOpacity>
-      </View>
+    <View>
+      <Text style={styles.text}>{title}</Text>
     </View>
   );
 };
 
+export const CustomButton = () => {
+  return (
+    <TouchableOpacity onPress={() => alert("Pressed")} style={styles.button}>
+      <Text style={styles.text}> Search </Text>
+    </TouchableOpacity>
+  );
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  button: {
+    borderWidth: 1,
+    borderRadius: 5,
   },
 });

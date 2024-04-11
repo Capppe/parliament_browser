@@ -1,33 +1,28 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { ListItem, Avatar } from "@rneui/themed";
+import { TouchableOpacity } from "react-native";
 
 export const Person = ({ person, onPress }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          onPress(person.id);
-        }}
-      >
-        <Image
-          style={styles.image}
-          source={{ uri: person.image !== null ? person.image.url : null }}
+    <ListItem
+      bottomDivider
+      Component={TouchableOpacity}
+      onPress={() => onPress(person.id)}
+    >
+      {person.image !== null ? (
+        <Avatar source={{ uri: person.image.url }} />
+      ) : (
+        <Avatar
+          rounded
+          icon={{ name: "person-outline", type: "material", size: 26 }}
+          containerStyle={{ backgroundColor: "#c2c2c2" }}
         />
-        <Text>{person.name}</Text>
-      </TouchableOpacity>
-    </View>
+      )}
+      <ListItem.Content>
+        <ListItem.Title>{person.name}</ListItem.Title>
+        <ListItem.Subtitle>
+          {person.city.replace(/[0-9]+\s+/g, "")}
+        </ListItem.Subtitle>
+      </ListItem.Content>
+    </ListItem>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    height: 140,
-    width: 140,
-  },
-  button: {
-    alignItems: "center",
-  },
-});
