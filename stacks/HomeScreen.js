@@ -1,29 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 import { PersonList } from "../components/PersonList";
 import { fetchPersons } from "../handlers/ApiHandler";
 
 export const HomeScreen = ({ navigation }) => {
   const [persons, setPersons] = useState([]);
-  const [currentSittingPersons, setCurrentSittingPersons] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  //Empty dependency list ([]) means it will run when the component is loaded
   useEffect(() => {
     getPersons();
   }, []);
-
-  useEffect(() => {
-    setCurrentSittingPersons(persons.filter((person) => person.state === "1"));
-  }, [persons]);
 
   const getPersons = async () => {
     setPersons(await fetchPersons());

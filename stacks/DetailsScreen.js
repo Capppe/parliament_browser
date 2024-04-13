@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 
-import { fetchPerson } from "../handlers/ApiHandler";
 import { FormBinding, FormItem } from "../components/FormItem";
+import { fetchPerson } from "../handlers/ApiHandler";
 
-export const DetailsScreen = ({ navigation, route }) => {
+export const DetailsScreen = ({ route }) => {
   const [person, setPerson] = useState(null);
 
   const personID = route.params.personID;

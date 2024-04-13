@@ -13,9 +13,9 @@ export async function fetchPersons() {
   return await apiCall(url);
 }
 
-/*****************/
-/* Person detail */
-/*****************/
+/******************/
+/* Person details */
+/******************/
 
 export async function fetchPerson(personID) {
   console.log("Fetching person with ID: ", personID);

@@ -8,7 +8,7 @@ export const PersonList = ({ data, onPress }) => {
   };
 
   return (
-    <View style={styles.topContainer}>
+    <View>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -21,8 +21,6 @@ export const PersonList = ({ data, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  topContainer: {
-  },
   list: {
     margin: 5,
   },
