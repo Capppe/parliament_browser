@@ -4,6 +4,6 @@ React Native application for 'Mobila Applikationer'
 
 # Features
 
-- Search for members of parliament by name
-- A FlatList of all members is shown when opening the app
+- A FlatList of currenyly sitting members is shown when opening the app
+- Search for ALL members of parliament by name
 - View a members details by clicking on them

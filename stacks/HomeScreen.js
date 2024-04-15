@@ -6,11 +6,17 @@ import { fetchPersons } from "../handlers/ApiHandler";
 
 export const HomeScreen = ({ navigation }) => {
   const [persons, setPersons] = useState([]);
+  const [currentlySitting, setCurrentlySitting] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     getPersons();
   }, []);
+
+  useEffect(() => {
+    const data = persons.filter((person) => person.state === "1");
+    setCurrentlySitting(data);
+  }, [persons]);
 
   const getPersons = async () => {
     setPersons(await fetchPersons());
@@ -41,7 +47,7 @@ export const HomeScreen = ({ navigation }) => {
             <View style={styles.titleBar}>
               <Text style={styles.drawerHeader}>Ledamöter</Text>
             </View>
-            <PersonList data={persons} onPress={viewPersonDetails} />
+            <PersonList data={currentlySitting} onPress={viewPersonDetails} />
           </View>
         ) : (
           <View>
